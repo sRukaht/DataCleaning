@@ -4,12 +4,17 @@ from nltk.tokenize import word_tokenize
 
 text= "After sleeping for four hours, she decided to sleep another four hours."
 
-#This part is for tokenization
+
+#This part is for Tokenization
+
 token=word_tokenize(text)
 
 token
 
-#This part is for stop words
+
+#This part is for Stop words
+
+
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
@@ -27,4 +32,32 @@ for w in word_tokens:
 
 print(word_tokens)
 print(filtered_sentence)
+
+
+#This part is to find Frequency distribution
+
+from nltk.probability import FreqDist
+fdist = FreqDist(word_tokens)
+print(fdist)
+
+fdist.most_common(3)
+
+import matplotlib.pyplot as plt
+fdist.plot(13,cumulative=False)
+plt.show()
+
+
+#This part is for Stemming
+
+from nltk.stem import PorterStemmer
+from nltk.tokenize import sent_tokenize
+
+s=PorterStemmer()
+
+stemmed_words=[]
+
+for w in filtered_sentence:
+  stemmed_words.append(s.stem(w))
+  
+print(stemmed_words)  
 
